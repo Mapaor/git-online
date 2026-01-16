@@ -1,5 +1,7 @@
+import type FS from '@isomorphic-git/lightning-fs';
+
 export interface ShellContext {
-  fs: any;                // LightningFS.promises
+  fs: FS['promises'];
   cwd: string;
   write: (text: string) => void;
   clear: () => void;

@@ -1,7 +1,6 @@
 import { parse } from './parser';
 import { commands } from './commands/index';
 import { ShellContext } from './context';
-import { CommandMap } from './commands/types';
 
 export class Shell {
   constructor(private ctx: ShellContext) {}
@@ -23,8 +22,9 @@ export class Shell {
 
     try {
       await fn(this.ctx, args);
-    } catch (err: any) {
-      this.ctx.write(`error: ${err?.message ?? err}\n`);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      this.ctx.write(`error: ${message}\n`);
     }
   }
 }

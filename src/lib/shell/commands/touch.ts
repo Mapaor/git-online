@@ -4,6 +4,6 @@ import { resolvePath } from '../utils';
 export async function touch(ctx: ShellContext, args: string[]) {
   for (const f of args) {
     const p = resolvePath(ctx.cwd, f);
-    await ctx.fs.writeFile(p, '', { flag: 'a' });
+    await ctx.fs.writeFile(p, '', { flag: 'a' } as unknown as Parameters<typeof ctx.fs.writeFile>[2]);
   }
 }

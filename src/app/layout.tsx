@@ -1,4 +1,11 @@
 import "./globals.css";
+import { JetBrains_Mono } from 'next/font/google';
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-jetbrains-mono',
+});
 
 export const metadata = {
   title: 'Git Online Learning Terminal',
@@ -14,11 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@6.0.0/css/xterm.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased">
+      <body className={`${jetbrainsMono.variable} antialiased`}>
         {children}
       </body>
     </html>

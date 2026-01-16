@@ -186,6 +186,7 @@ export const useTerminal = (containerRef: React.RefObject<HTMLDivElement | null>
       cleanupRef.current = () => {
         mounted = false;
         isInitializingRef.current = false;
+        disposable.dispose();
         window.removeEventListener('resize', handleResize);
         if (xtermRef.current) {
           xtermRef.current.dispose();

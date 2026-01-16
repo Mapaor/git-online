@@ -20,7 +20,7 @@ export async function echo(ctx: ShellContext, args: string[]) {
     }
     const path = resolvePath(ctx.cwd, filePath);
     const flag = append ? 'a' : 'w';
-    await ctx.fs.writeFile(path, content, { flag });
+    await ctx.fs.writeFile(path, content, { flag } as unknown as Parameters<typeof ctx.fs.writeFile>[2]);
   } else {
     // Sense redirecció, imprimir a terminal
     content = args.join(' ') + '\n';
